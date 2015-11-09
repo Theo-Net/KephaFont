@@ -1,0 +1,89 @@
+/**
+ * Police d'icônes
+ */
+
+
+// Général
+@font-face {
+	font-family: "<%= fontName %>" ;
+	src: url('../fonts/KephaFont/<%= fontName %>.eot');
+	src: url('../fonts/KephaFont/<%= fontName %>.eot?') format('eot'),
+		   url('../fonts/KephaFont/<%= fontName %>.woff') format('woff'),
+		   url('../fonts/KephaFont/<%= fontName %>.ttf') format('truetype'),
+		   url('../fonts/KephaFont/<%= fontName %>.svg#<%= fontName %>') format('svg') ;
+}
+
+.icon {
+  display: inline-block ;
+  position: relative ; 
+  top: 0.1em ; 
+
+  font-family: "<%= fontName %>" ;
+	-webkit-font-smoothing: antialiased ;
+	-moz-osx-font-smoothing: grayscale ;
+	font-style: normal ;
+	font-variant: normal ;
+	font-weight: normal ;
+
+  &.icon-lg {
+    font-size:   1.33333em ; 
+    line-height: 0.75em ; 
+  }
+  &.icon-2x { font-size: 2em ; line-height: 1 ; } 
+  &.icon-3x { font-size: 3em ; line-height: 1 ; } 
+  &.icon-4x { font-size: 4em ; line-height: 1 ; } 
+  &.icon-5x { font-size: 5em ; line-height: 1 ; } 
+}
+
+// Listes
+.icon-ul {
+  list-style: none ; 
+
+  & > li {
+    position: relative ; 
+  }
+}
+.icon-li {
+  position: absolute ; 
+  left: -2em ; 
+  line-height: 1.5 ; 
+}
+
+// Animation
+.icon-spin {
+  animation: 2s linear 0s normal none infinite running icon-spin ;
+}
+.icon-pulse {
+  animation: 1s steps(8, end) 0s normal none infinite running icon-spin ;
+}
+@keyframes icon-spin {
+  0% {
+    transform: rotate(0deg) ;
+  }
+  100% {
+    transform: rotate(359deg) ;
+  }
+}
+
+// Les icônes
+.icon-char(@filename) {
+	<% _.each(glyphs, function(glyph) { 
+    %>@<%= glyph.fileName %>: "\<%= glyph.codePoint %>" ;
+	<% }); %>
+	content: @@filename ;
+}
+
+.icon(@filename, @insert: before) {
+	@pseudo-selector: ~":@{insert}" ;
+
+	&@{pseudo-selector} {
+		.icon-char(@filename) ;
+	}
+}
+
+<% _.each(glyphs, function(glyph) { 
+  %>.icon-<%= glyph.fileName %> {
+	.icon(<%= glyph.fileName %>) ;
+}
+<% }); %>
+

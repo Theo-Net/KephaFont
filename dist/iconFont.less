@@ -1,0 +1,202 @@
+/**
+ * Police d'icônes
+ */
+
+
+// Général
+@font-face {
+	font-family: "KephaFont" ;
+	src: url('../fonts/KephaFont/KephaFont.eot');
+	src: url('../fonts/KephaFont/KephaFont.eot?') format('eot'),
+		   url('../fonts/KephaFont/KephaFont.woff') format('woff'),
+		   url('../fonts/KephaFont/KephaFont.ttf') format('truetype'),
+		   url('../fonts/KephaFont/KephaFont.svg#KephaFont') format('svg') ;
+}
+
+.icon {
+  display: inline-block ;
+  position: relative ; 
+  top: 0.1em ; 
+
+  font-family: "KephaFont" ;
+	-webkit-font-smoothing: antialiased ;
+	-moz-osx-font-smoothing: grayscale ;
+	font-style: normal ;
+	font-variant: normal ;
+	font-weight: normal ;
+
+  &.icon-lg {
+    font-size:   1.33333em ; 
+    line-height: 0.75em ; 
+  }
+  &.icon-2x { font-size: 2em ; line-height: 1 ; } 
+  &.icon-3x { font-size: 3em ; line-height: 1 ; } 
+  &.icon-4x { font-size: 4em ; line-height: 1 ; } 
+  &.icon-5x { font-size: 5em ; line-height: 1 ; } 
+}
+
+// Listes
+.icon-ul {
+  list-style: none ; 
+
+  & > li {
+    position: relative ; 
+  }
+}
+.icon-li {
+  position: absolute ; 
+  left: -2em ; 
+  line-height: 1.5 ; 
+}
+
+// Animation
+.icon-spin {
+  animation: 2s linear 0s normal none infinite running icon-spin ;
+}
+.icon-pulse {
+  animation: 1s steps(8, end) 0s normal none infinite running icon-spin ;
+}
+@keyframes icon-spin {
+  0% {
+    transform: rotate(0deg) ;
+  }
+  100% {
+    transform: rotate(359deg) ;
+  }
+}
+
+// Les icônes
+.icon-char(@filename) {
+	@add: "\E001" ;
+	@arrow-drop-down: "\E002" ;
+	@arrow-drop-up: "\E003" ;
+	@bug: "\E004" ;
+	@check: "\E005" ;
+	@checkbox-blank: "\E006" ;
+	@checkbox: "\E007" ;
+	@chevron-left: "\E008" ;
+	@chevron-right: "\E009" ;
+	@close: "\E00A" ;
+	@create: "\E00B" ;
+	@delete: "\E00C" ;
+	@error: "\E00D" ;
+	@event: "\E00E" ;
+	@expand-less: "\E00F" ;
+	@expand-more: "\E010" ;
+	@home: "\E011" ;
+	@info: "\E012" ;
+	@logo-img: "\E013" ;
+	@logo-txt: "\E014" ;
+	@logo: "\E015" ;
+	@mail: "\E016" ;
+	@menu: "\E017" ;
+	@radio-button-off: "\E018" ;
+	@radio-button-on: "\E019" ;
+	@search: "\E01A" ;
+	@settings: "\E01B" ;
+	@spinner: "\E01C" ;
+	@today: "\E01D" ;
+	@warning: "\E01E" ;
+	
+	content: @@filename ;
+}
+
+.icon(@filename, @insert: before) {
+	@pseudo-selector: ~":@{insert}" ;
+
+	&@{pseudo-selector} {
+		.icon-char(@filename) ;
+	}
+}
+
+.icon-add {
+	.icon(add) ;
+}
+.icon-arrow-drop-down {
+	.icon(arrow-drop-down) ;
+}
+.icon-arrow-drop-up {
+	.icon(arrow-drop-up) ;
+}
+.icon-bug {
+	.icon(bug) ;
+}
+.icon-check {
+	.icon(check) ;
+}
+.icon-checkbox-blank {
+	.icon(checkbox-blank) ;
+}
+.icon-checkbox {
+	.icon(checkbox) ;
+}
+.icon-chevron-left {
+	.icon(chevron-left) ;
+}
+.icon-chevron-right {
+	.icon(chevron-right) ;
+}
+.icon-close {
+	.icon(close) ;
+}
+.icon-create {
+	.icon(create) ;
+}
+.icon-delete {
+	.icon(delete) ;
+}
+.icon-error {
+	.icon(error) ;
+}
+.icon-event {
+	.icon(event) ;
+}
+.icon-expand-less {
+	.icon(expand-less) ;
+}
+.icon-expand-more {
+	.icon(expand-more) ;
+}
+.icon-home {
+	.icon(home) ;
+}
+.icon-info {
+	.icon(info) ;
+}
+.icon-logo-img {
+	.icon(logo-img) ;
+}
+.icon-logo-txt {
+	.icon(logo-txt) ;
+}
+.icon-logo {
+	.icon(logo) ;
+}
+.icon-mail {
+	.icon(mail) ;
+}
+.icon-menu {
+	.icon(menu) ;
+}
+.icon-radio-button-off {
+	.icon(radio-button-off) ;
+}
+.icon-radio-button-on {
+	.icon(radio-button-on) ;
+}
+.icon-search {
+	.icon(search) ;
+}
+.icon-settings {
+	.icon(settings) ;
+}
+.icon-spinner {
+	.icon(spinner) ;
+}
+.icon-today {
+	.icon(today) ;
+}
+.icon-warning {
+	.icon(warning) ;
+}
+

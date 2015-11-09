@@ -1,0 +1,22 @@
+{
+  "name": "KephaFont",
+  "version": "0.1.0",
+  "description": "Police d'icônes des projets Théo-Net",
+  "author": "Grégoire Oliveira Silva",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Theo-Ne/KephaFont.git" 
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-iconfont": "^5.0.0",
+    "gulp-iconfont-css": "2.0.0",
+    "gulp-plumber": "^1.0.1",
+    "rimraf": "^2.4.3"
+  }
+}
