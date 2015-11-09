@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Theo-Ne/KephaFont.git" 
+    "url": "git://github.com/Theo-Net/KephaFont.git" 
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
