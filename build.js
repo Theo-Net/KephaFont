@@ -1,7 +1,8 @@
 'use strict';
 
 var svgicons2svgfont = require('svgicons2svgfont'),
-    fs = require('fs') ; 
+    fs = require('fs'),
+    svg2ttf = require('svg2ttf') ; 
 
 var config = {
   fontName: 'KephaFont',
@@ -27,6 +28,9 @@ var fontStream = svgicons2svgfont({
 fontStream.pipe(
     fs.createWriteStream(config.pathFont + '/' + config.fontName + '.svg'))
   .on('finish', function () {
+    console.log('SVG font successfully created!') ; 
+    createLess(glyphs) ; 
+    convertFont() ; 
     console.log('Font ' + config.fontName + ' successfully created!') ; 
   })
   .on('error', function (err) {
@@ -76,6 +80,24 @@ var createLess = function (glyphs) {
 
 
 /**
+ * Créé les différents formats de polices
+ */
+
+var convertFont = function () {
+
+  // TTF
+  var ttf = svg2ttf(fs.readFileSync(
+                config.pathFont + '/' + config.fontName + '.svg')
+              .toString(), {}) ;
+  fs.writeFileSync(
+      config.pathFont + '/' + config.fontName + '.ttf', 
+      new Buffer(ttf.buffer)
+  ) ;
+  console.log('TTF font created!') ; 
+}
+
+
+/**
  * On charge la liste des icônes
  */
 
@@ -88,7 +110,6 @@ fs.readdir(config.pathSvg, function (err, files) {
     if (file.search(/\.svg$/) > -1) {
 
       var glyphName = file.match(/^(.+)\.svg$/)[1] ; 
-      console.log(glyphName + ' ' + unicode) ;
       var glyph = fs.createReadStream(config.pathSvg + '/' + file) ; 
       glyph.metadata = {
         unicode: [String.fromCharCode(unicode)],
@@ -102,7 +123,6 @@ fs.readdir(config.pathSvg, function (err, files) {
   }) ;
 
   fontStream.end() ; 
-  createLess(glyphs) ; 
 }) ; 
 
 
