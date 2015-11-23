@@ -35,6 +35,7 @@ gulp.task('build', ['clean'], function () {
              }))
              .pipe(iconfont({
                fontName:  'KephaFont',
+               formats: ['ttf', 'eot', 'woff', 'woff2'],
                normalize: true,
                metadata: 'Grégoire Oliveira Silva. ' 
                        + 'Licensed under the Creative Common By 4.0'
