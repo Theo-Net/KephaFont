@@ -2,7 +2,10 @@
 
 var svgicons2svgfont = require('svgicons2svgfont'),
     fs = require('fs'),
-    svg2ttf = require('svg2ttf') ; 
+    svg2ttf = require('svg2ttf'),
+    ttf2eot = require('ttf2eot'), 
+    ttf2woff = require('ttf2woff'),  
+    ttf2woff2 = require('ttf2woff2') ; 
 
 var config = {
   fontName: 'KephaFont',
@@ -94,6 +97,33 @@ var convertFont = function () {
       new Buffer(ttf.buffer)
   ) ;
   console.log('TTF font created!') ; 
+
+  // EOT
+  var eot = new Buffer(ttf2eot(ttf.buffer).buffer) ; 
+  fs.writeFile(
+      config.pathFont + '/' + config.fontName + '.eot',
+      eot, function (err) {
+        if (err) throw err ; 
+        console.log('EOT font created')
+      }) ; 
+
+  // WOFF
+  var woff = new Buffer(ttf2woff(ttf.buffer).buffer) ; 
+  fs.writeFile(
+      config.pathFont + '/' + config.fontName + '.woff',
+      woff, function (err) {
+        if (err) throw err ; 
+        console.log('WOFF font created')
+      }) ; 
+
+  // WOFF2
+  var woff2 = new Buffer(ttf2woff2(ttf.buffer).buffer) ; 
+  fs.writeFile(
+      config.pathFont + '/' + config.fontName + '.woff2',
+      woff2, function (err) {
+        if (err) throw err ; 
+        console.log('WOFF2 font created')
+      }) ; 
 }
 
 

@@ -10,7 +10,6 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "convert-font": "ttf2eot dist/font/KephaFont.ttf dist/font/KephaFont.eot && ttf2woff dist/font/KephaFont.ttf dist/font/KephaFont.woff && ttf2woff2 < dist/font/KephaFont.ttf > dist/font/KephaFont.woff2",
     "build": "mkdirp dist/font && node build.js && npm run convert-font",
     "clean": "rimraf dist"
   },
