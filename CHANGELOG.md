@@ -1,5 +1,9 @@
 # KephaFont changelog
 
+## 0.2.0 (2015-11-24)
+
+ - n'utilise plus Gulp pour la génération de la police
+
 ## 0.1.1 (2015-11-23)
 
  - correction typographique dans le README
