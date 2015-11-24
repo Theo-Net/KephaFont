@@ -67,7 +67,7 @@ var createLess = function (glyphs) {
     // On prépare le contenu du Less
     glyphs.forEach(function (glyph) { 
 
-      listChar += '  ' + glyph.name + ': "' 
+      listChar += '  @' + glyph.name + ': "' 
                + glyph.string + '" ; \n' ;
       classes  += '.icon-' + glyph.name + ' { \n' 
                +  '  .icon(' + glyph.name + ') ; \n'
