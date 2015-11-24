@@ -7,11 +7,14 @@ var svgicons2svgfont = require('svgicons2svgfont'),
     ttf2woff = require('ttf2woff'),  
     ttf2woff2 = require('ttf2woff2') ; 
 
+/**
+ * Configuration de la police
+ */
 var config = {
   fontName: 'KephaFont',
-  author: 'Grégoire Oliveira Silva',
-  license: 'Licensed under the Creative Common By 4.0',
-  pathSvg: 'src/svg',
+  author:   'Grégoire Oliveira Silva',
+  license:  'Licensed under the Creative Common By 4.0',
+  pathSvg:  'src/svg',
   pathFont: 'dist/font',
   pathLessSrc: 'src/icons.less',
   pathLess: 'dist/KephaFont.less',
@@ -49,6 +52,7 @@ var glyphs = Array() ;
 
 var createLess = function (glyphs) {
 
+  // Charge le template
   fs.readFile(config.pathLessSrc, function (err, data) {
 
     if (err) throw err ;
@@ -60,6 +64,7 @@ var createLess = function (glyphs) {
     // les classes
     var classes = '' ; 
 
+    // On prépare le contenu du Less
     glyphs.forEach(function (glyph) { 
 
       listChar += '  ' + glyph.name + ': "' 
@@ -69,12 +74,12 @@ var createLess = function (glyphs) {
                +  '} \n' ; 
     }) ; 
 
+    // On insert la liste des caractères et des classes
     data = data.toString().replace(/{{listChar}}/, listChar) ; 
     data = data.toString().replace(/{{classes}}/, classes) ; 
 
-
+    // On sauve le fichier
     fs.writeFile(config.pathLess, data, function (err) {
-
       if (err) throw err ; 
       console.log('Fichier LESS créé') ; 
     }) ; 
